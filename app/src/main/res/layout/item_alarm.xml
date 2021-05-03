@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="6dp"
         app:cardElevation="6dp"
-        android:layout_margin="8dp">
+        android:layout_margin="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,6 +24,7 @@
                 android:text="00:00"
                 android:textSize="36sp"/>
 
+<!--            D-->
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,13 +36,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_margin="2dp">
-
+<!--D-->
                 <TextView
                     android:id="@+id/item_alarm_recurringDays"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp" />
-
+<!--D-->
                 <TextView
                     android:id="@+id/item_alarm_title"
                     android:layout_width="wrap_content"
