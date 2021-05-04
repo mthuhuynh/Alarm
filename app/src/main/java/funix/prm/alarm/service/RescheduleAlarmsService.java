@@ -1,18 +1,18 @@
 package funix.prm.alarm.service;
 
-import android.app.Application;
-import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleService;
 import androidx.lifecycle.Observer;
 
+import java.util.List;
+
 import funix.prm.alarm.data.Alarm;
 import funix.prm.alarm.data.AlarmRepository;
-
-import java.util.List;
 
 public class RescheduleAlarmsService extends LifecycleService {
     @Override
@@ -27,6 +27,7 @@ public class RescheduleAlarmsService extends LifecycleService {
         AlarmRepository alarmRepository = new AlarmRepository(getApplication());
 
         alarmRepository.getAlarmsLiveData().observe(this, new Observer<List<Alarm>>() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onChanged(List<Alarm> alarms) {
                 for (Alarm a : alarms) {

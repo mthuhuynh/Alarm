@@ -56,15 +56,15 @@ public class RingActivity extends AppCompatActivity {
                         calendar.get(Calendar.MINUTE),
                         "Snooze",
                         System.currentTimeMillis(),
-                        true,
-                        false,
-                        false,
-                        false,
-                        false,
-                        false,
-                        false,
-                        false,
-                        false
+                       true
+//                        false,
+//                        false,
+//                        false,
+//                        false,
+//                        false,
+//                        false,
+//                        false,
+//                        false
                 );
 
                 alarm.schedule(getApplicationContext());
