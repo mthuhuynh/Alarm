@@ -57,14 +57,6 @@ public class RingActivity extends AppCompatActivity {
                         "Snooze",
                         System.currentTimeMillis(),
                        true
-//                        false,
-//                        false,
-//                        false,
-//                        false,
-//                        false,
-//                        false,
-//                        false,
-//                        false
                 );
 
                 alarm.schedule(getApplicationContext());

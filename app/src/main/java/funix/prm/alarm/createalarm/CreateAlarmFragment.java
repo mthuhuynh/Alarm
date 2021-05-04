@@ -54,17 +54,6 @@ public class CreateAlarmFragment extends Fragment {
         title = view.findViewById(R.id.fragment_createalarm_title);
         scheduleAlarm = view.findViewById(R.id.fragment_createalarm_scheduleAlarm);
 
-//        recurring.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked) {
-//                    recurringOptions.setVisibility(View.VISIBLE);
-//                } else {
-//                    recurringOptions.setVisibility(View.GONE);
-//                }
-//            }
-//        });
-
         scheduleAlarm.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
@@ -88,14 +77,6 @@ public class CreateAlarmFragment extends Fragment {
                 title.getText().toString(),
                 System.currentTimeMillis(),
                 true
-//                recurring.isChecked(),
-//                mon.isChecked(),
-//                tue.isChecked(),
-//                wed.isChecked(),
-//                thu.isChecked(),
-//                fri.isChecked(),
-//                sat.isChecked(),
-//                sun.isChecked()
         );
 
         createAlarmViewModel.insert(alarm);
