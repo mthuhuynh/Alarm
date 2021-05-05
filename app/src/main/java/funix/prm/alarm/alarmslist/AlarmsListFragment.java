@@ -20,6 +20,7 @@ import java.util.List;
 
 import funix.prm.alarm.R;
 import funix.prm.alarm.data.Alarm;
+import funix.prm.alarm.data.MyDBHelper;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +33,7 @@ public class AlarmsListFragment extends Fragment implements OnToggleAlarmListene
     private AlarmsListViewModel alarmsListViewModel;
     private RecyclerView alarmsRecyclerView;
     private FloatingActionButton addAlarm;
+    private MyDBHelper myDB;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class AlarmsListFragment extends Fragment implements OnToggleAlarmListene
         alarmsRecyclerView = view.findViewById(R.id.fragment_listalarms_recylerView);
         alarmsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         alarmsRecyclerView.setAdapter(alarmRecyclerViewAdapter);
+        myDB = new MyDBHelper(getContext());
 
         addAlarm = view.findViewById(R.id.fragment_listalarms_addAlarm);
         addAlarm.setOnClickListener(new View.OnClickListener() {

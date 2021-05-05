@@ -20,21 +20,14 @@ import java.util.Random;
 
 import funix.prm.alarm.R;
 import funix.prm.alarm.data.Alarm;
+import funix.prm.alarm.data.MyDBHelper;
 
 public class CreateAlarmFragment extends Fragment {
 
-//    @BindView(R.id.fragment_createalarm_recurring) CheckBox recurring;
-//    @BindView(R.id.fragment_createalarm_checkMon) CheckBox mon;
-//    @BindView(R.id.fragment_createalarm_checkTue) CheckBox tue;
-//    @BindView(R.id.fragment_createalarm_checkWed) CheckBox wed;
-//    @BindView(R.id.fragment_createalarm_checkThu) CheckBox thu;
-//    @BindView(R.id.fragment_createalarm_checkFri) CheckBox fri;
-//    @BindView(R.id.fragment_createalarm_checkSat) CheckBox sat;
-//    @BindView(R.id.fragment_createalarm_checkSun) CheckBox sun;
-//    @BindView(R.id.fragment_createalarm_recurring_options) LinearLayout recurringOptions;
     TimePicker timePicker;
     EditText title;
     Button scheduleAlarm;
+    MyDBHelper mDB;
 
     private CreateAlarmViewModel createAlarmViewModel;
 
@@ -53,6 +46,7 @@ public class CreateAlarmFragment extends Fragment {
         timePicker = view.findViewById(R.id.fragment_createalarm_timePicker);
         title = view.findViewById(R.id.fragment_createalarm_title);
         scheduleAlarm = view.findViewById(R.id.fragment_createalarm_scheduleAlarm);
+        mDB = new MyDBHelper(getContext());
 
         scheduleAlarm.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -79,7 +73,7 @@ public class CreateAlarmFragment extends Fragment {
                 true
         );
 
-        createAlarmViewModel.insert(alarm);
+        mDB.insert(alarm);
 
         alarm.schedule(getContext());
     }
