@@ -1,5 +1,8 @@
 package funix.prm.alarm.alarmslist;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +23,7 @@ import java.util.List;
 
 import funix.prm.alarm.R;
 import funix.prm.alarm.data.Alarm;
+import funix.prm.alarm.service.AlarmService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,9 +78,12 @@ public class AlarmsListFragment extends Fragment implements OnToggleAlarmListene
         if (alarm.isStarted()) {
             alarm.cancelAlarm(getContext());
             alarmsListViewModel.update(alarm);
+            Intent intentService = new Intent(getActivity().getApplicationContext(), AlarmService.class);
+            getActivity().getApplicationContext().stopService(intentService);
         } else {
             alarm.schedule(getContext());
             alarmsListViewModel.update(alarm);
         }
     }
+
 }

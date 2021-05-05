@@ -36,9 +36,7 @@ public class Alarm {
         this.hour = hour;
         this.minute = minute;
         this.started = started;
-
         this.title = title;
-
         this.created = created;
     }
 
@@ -103,7 +101,7 @@ public class Alarm {
         alarmManager.cancel(alarmPendingIntent);
         this.started = false;
 
-        String toastText = String.format("Alarm cancelled for %02d:%02d with id %d", hour, minute, alarmId);
+        String toastText = String.format("Alarm cancelled for %02d:%02d", hour, minute);
         Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
         Log.i("cancel", toastText);
     }

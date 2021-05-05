@@ -22,6 +22,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
         else {
             String toastText = String.format("Alarm Received");
             Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
+            startAlarmService(context, intent);
         }
     }
 
