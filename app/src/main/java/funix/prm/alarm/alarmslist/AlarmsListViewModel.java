@@ -12,15 +12,11 @@ import funix.prm.alarm.data.Alarm;
 import funix.prm.alarm.data.MyDBHelper;
 
 public class AlarmsListViewModel extends AndroidViewModel {
-//    private AlarmRepository alarmRepository;
     private LiveData<List<Alarm>> alarmsLiveData;
     private MyDBHelper mDB;
 
     public AlarmsListViewModel(@NonNull Application application) {
         super(application);
-
-//        alarmRepository = new AlarmRepository(application);
-        //update sql
         mDB = new MyDBHelper(getApplication());
 
 

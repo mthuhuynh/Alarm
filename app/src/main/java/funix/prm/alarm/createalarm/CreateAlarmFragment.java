@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
 import java.util.Random;
@@ -29,13 +28,9 @@ public class CreateAlarmFragment extends Fragment {
     Button scheduleAlarm;
     MyDBHelper mDB;
 
-    private CreateAlarmViewModel createAlarmViewModel;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        createAlarmViewModel = ViewModelProviders.of(this).get(CreateAlarmViewModel.class);
     }
 
     @Nullable

@@ -7,14 +7,18 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LifecycleService;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 import java.util.List;
 
 import funix.prm.alarm.data.Alarm;
-import funix.prm.alarm.data.AlarmRepository;
+import funix.prm.alarm.data.MyDBHelper;
 
 public class RescheduleAlarmsService extends LifecycleService {
+    private LiveData<List<Alarm>> alarmsLiveData;
+    private MyDBHelper mDB;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -24,9 +28,10 @@ public class RescheduleAlarmsService extends LifecycleService {
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
 
-        AlarmRepository alarmRepository = new AlarmRepository(getApplication());
+        mDB = new MyDBHelper(getApplication());
+        alarmsLiveData = mDB.read();
 
-        alarmRepository.getAlarmsLiveData().observe(this, new Observer<List<Alarm>>() {
+        alarmsLiveData.observe(this, new Observer<List<Alarm>>() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onChanged(List<Alarm> alarms) {
