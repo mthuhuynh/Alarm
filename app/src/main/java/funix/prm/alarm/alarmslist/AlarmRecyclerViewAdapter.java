@@ -12,11 +12,13 @@ import java.util.List;
 
 import funix.prm.alarm.R;
 import funix.prm.alarm.data.Alarm;
+import funix.prm.alarm.data.MyDBHelper;
 
 
 public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHolder> {
     private List<Alarm> alarms;
     private OnToggleAlarmListener listener;
+    private MyDBHelper mDB;
 
     public AlarmRecyclerViewAdapter(OnToggleAlarmListener listener) {
         this.alarms = new ArrayList<Alarm>();
@@ -27,6 +29,7 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHold
     @Override
     public AlarmViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_alarm, parent, false);
+
         return new AlarmViewHolder(itemView, listener);
     }
 
