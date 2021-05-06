@@ -18,8 +18,6 @@ public class AlarmsListViewModel extends AndroidViewModel {
     public AlarmsListViewModel(@NonNull Application application) {
         super(application);
         mDB = new MyDBHelper(getApplication());
-
-
         alarmsLiveData = mDB.read();
     }
 

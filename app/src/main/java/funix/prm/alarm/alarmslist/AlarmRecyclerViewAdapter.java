@@ -46,6 +46,11 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHold
     public void setAlarms(List<Alarm> alarms) {
         this.alarms = alarms;
         notifyDataSetChanged();
+
+    }
+
+    public List<Alarm> getAlarms() {
+        return this.alarms;
     }
 
     @Override

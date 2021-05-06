@@ -79,7 +79,7 @@ public class Alarm {
 
         String toastText = null;
         try {
-            toastText = String.format("One Time Alarm %s scheduled at %02d:%02d", title, hour, minute, alarmId);
+            toastText = String.format("One Time Alarm %s scheduled at %02d:%02d", title, hour, minute);
         } catch (Exception e) {
             e.printStackTrace();
         }

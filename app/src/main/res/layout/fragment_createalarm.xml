@@ -11,117 +11,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/fragment_createalarm_scheduleAlarmHeading"
-            android:layout_width="match_parent"
+        <TimePicker
+            android:id="@+id/fragment_createalarm_timePicker"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Schedule Alarm"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fragment_createalarm_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_weight="1"
+            android:timePickerMode="clock" />
 
-        <LinearLayout
-            android:id="@+id/fragment_createalarm_timePickerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_createalarm_scheduleAlarmHeading">
-
-<!--            <TextView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_weight="0.4"-->
-<!--                android:text="Alarm Time"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />-->
-
-            <TimePicker
-                android:id="@+id/fragment_createalarm_timePicker"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:timePickerMode="clock" />
-        </LinearLayout>
-
-<!--        D-->
         <EditText
             android:id="@+id/fragment_createalarm_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Alarm Title"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_createalarm_timePickerLayout" />
-<!--D-->
-        <CheckBox
-            android:id="@+id/fragment_createalarm_recurring"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="Recurring Alarm"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_createalarm_title" />
-<!--D-->
-        <LinearLayout
-            android:id="@+id/fragment_createalarm_recurring_options"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_createalarm_recurring">
-
-            <CheckBox
-                android:id="@+id/fragment_createalarm_checkMon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mon" />
-
-            <CheckBox
-                android:id="@+id/fragment_createalarm_checkTue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tue" />
-
-            <CheckBox
-                android:id="@+id/fragment_createalarm_checkWed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wed" />
-
-            <CheckBox
-                android:id="@+id/fragment_createalarm_checkThu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thu" />
-
-            <CheckBox
-                android:id="@+id/fragment_createalarm_checkFri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fri" />
-
-            <CheckBox
-                android:id="@+id/fragment_createalarm_checkSat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sat" />
-
-            <CheckBox
-                android:id="@+id/fragment_createalarm_checkSun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sun" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/fragment_createalarm_timePicker" />
 
         <Button
             android:id="@+id/fragment_createalarm_scheduleAlarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Schedule Alarm"
-            app:layout_constraintTop_toBottomOf="@id/fragment_createalarm_timePickerLayout"
+            android:text="Add Alarm"
+            app:layout_constraintTop_toBottomOf="@id/fragment_createalarm_title"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_margin="@dimen/margin"
-             />
+            android:layout_margin="@dimen/margin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

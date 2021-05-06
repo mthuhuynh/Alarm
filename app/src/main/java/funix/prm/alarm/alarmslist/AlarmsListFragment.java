@@ -48,6 +48,7 @@ public class AlarmsListFragment extends Fragment implements OnToggleAlarmListene
             public void onChanged(List<Alarm> alarms) {
                 if (alarms != null) {
                     alarmRecyclerViewAdapter.setAlarms(alarms);
+
                 }
             }
         });
@@ -61,6 +62,8 @@ public class AlarmsListFragment extends Fragment implements OnToggleAlarmListene
         alarmsRecyclerView = view.findViewById(R.id.fragment_listalarms_recylerView);
         alarmsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         alarmsRecyclerView.setAdapter(alarmRecyclerViewAdapter);
+//        alarmRecyclerViewAdapter.notifyDataSetChanged();
+//        alarmsRecyclerView.invalidate();
 
         addAlarm = view.findViewById(R.id.fragment_listalarms_addAlarm);
         addAlarm.setOnClickListener(new View.OnClickListener() {
@@ -78,12 +81,21 @@ public class AlarmsListFragment extends Fragment implements OnToggleAlarmListene
         if (alarm.isStarted()) {
             alarm.cancelAlarm(getContext());
             alarmsListViewModel.update(alarm);
-            Intent intentService = new Intent(getActivity().getApplicationContext(), AlarmService.class);
-            getActivity().getApplicationContext().stopService(intentService);
         } else {
             alarm.schedule(getContext());
             alarmsListViewModel.update(alarm);
         }
+    }
+
+    @Override
+    public void onDeleteIN(Alarm alarm) {
+        int position = alarmRecyclerViewAdapter.getAlarms().indexOf(alarm);
+        alarmsRecyclerView.removeViewAt(position);
+        alarmRecyclerViewAdapter.notifyItemRemoved(position);
+        alarmRecyclerViewAdapter.notifyItemRangeChanged(position, alarmRecyclerViewAdapter.getAlarms().size());
+
+        alarmRecyclerViewAdapter.notifyDataSetChanged();
+        alarmsRecyclerView.invalidate();
     }
 
 }

@@ -20,6 +20,7 @@ import static funix.prm.alarm.broadcastreceiver.AlarmBroadcastReceiver.TITLE;
 public class AlarmService extends Service {
     private MediaPlayer mediaPlayer;
     private Vibrator vibrator;
+    public static final String ACTION_STOP = "stop_alarm";
 
     @Override
     public void onCreate() {
@@ -29,13 +30,13 @@ public class AlarmService extends Service {
         mediaPlayer.setLooping(true);
 
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-//        Intent notificationIntent = new Intent(this, funix.prm.alarm.activity.RingActivity.class);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+        if(intent.getAction() != null && intent.getAction().equals(ACTION_STOP)) {
+            onDestroy();
+        }
 
         String alarmTitle = String.format("%s Alarm", intent.getStringExtra(TITLE));
 
@@ -43,7 +44,6 @@ public class AlarmService extends Service {
                 .setContentTitle(alarmTitle)
                 .setContentText("Ring Ring .. Ring Ring")
                 .setSmallIcon(R.drawable.ic_alarm_black_24dp)
-//                .setContentIntent(pendingIntent)
                 .build();
 
         mediaPlayer.start();
@@ -59,8 +59,8 @@ public class AlarmService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         mediaPlayer.stop();
+        stopSelf();
         vibrator.cancel();
     }
 
