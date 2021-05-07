@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import funix.prm.alarm.R;
@@ -65,9 +66,9 @@ public class AlarmViewHolder extends RecyclerView.ViewHolder {
         alarmDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "delete", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "Alarm deleted", Toast.LENGTH_SHORT).show();
                 mDB.delete(alarm);
-                listener.onDeleteIN(alarm);
+                Navigation.findNavController(view).navigate(R.id.action_alarmsListFragment_reload);
             }
         });
     }

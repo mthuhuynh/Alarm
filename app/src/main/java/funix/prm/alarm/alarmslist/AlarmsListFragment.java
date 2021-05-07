@@ -62,8 +62,6 @@ public class AlarmsListFragment extends Fragment implements OnToggleAlarmListene
         alarmsRecyclerView = view.findViewById(R.id.fragment_listalarms_recylerView);
         alarmsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         alarmsRecyclerView.setAdapter(alarmRecyclerViewAdapter);
-//        alarmRecyclerViewAdapter.notifyDataSetChanged();
-//        alarmsRecyclerView.invalidate();
 
         addAlarm = view.findViewById(R.id.fragment_listalarms_addAlarm);
         addAlarm.setOnClickListener(new View.OnClickListener() {
@@ -86,16 +84,4 @@ public class AlarmsListFragment extends Fragment implements OnToggleAlarmListene
             alarmsListViewModel.update(alarm);
         }
     }
-
-    @Override
-    public void onDeleteIN(Alarm alarm) {
-        int position = alarmRecyclerViewAdapter.getAlarms().indexOf(alarm);
-        alarmsRecyclerView.removeViewAt(position);
-        alarmRecyclerViewAdapter.notifyItemRemoved(position);
-        alarmRecyclerViewAdapter.notifyItemRangeChanged(position, alarmRecyclerViewAdapter.getAlarms().size());
-
-        alarmRecyclerViewAdapter.notifyDataSetChanged();
-        alarmsRecyclerView.invalidate();
-    }
-
 }

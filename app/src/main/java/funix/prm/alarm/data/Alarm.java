@@ -77,6 +77,11 @@ public class Alarm {
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
 
+        // if alarm time has already passed, increment day by 1
+        if (calendar.getTimeInMillis() <= System.currentTimeMillis()) {
+            calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
+        }
+
         String toastText = null;
         try {
             toastText = String.format("One Time Alarm %s scheduled at %02d:%02d", title, hour, minute);
