@@ -8,7 +8,6 @@ import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -22,12 +21,12 @@ import static funix.prm.alarm.broadcastreceiver.AlarmBroadcastReceiver.TITLE;
 @Entity(tableName = "alarm_table")
 public class Alarm {
     @PrimaryKey
-    @NonNull
     private int alarmId;
 
-    private int hour, minute;
+    private final int hour;
+    private final int minute;
     private boolean started;
-    private String title;
+    private final String title;
 
     private long created;
 

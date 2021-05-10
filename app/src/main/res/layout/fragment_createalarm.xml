@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -12,28 +10,29 @@
         android:layout_height="match_parent">
 
         <TimePicker
-            android:id="@+id/fragment_createalarm_timePicker"
+            android:id="@+id/fragment_create_alarm_timePicker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/fragment_createalarm_title"
+            app:layout_constraintBottom_toTopOf="@id/fragment_create_alarm_title"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_weight="1"
             android:timePickerMode="clock" />
 
         <EditText
-            android:id="@+id/fragment_createalarm_title"
+            android:id="@+id/fragment_create_alarm_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Alarm Title"
-            app:layout_constraintTop_toBottomOf="@id/fragment_createalarm_timePicker" />
+            android:hint="@string/alarm_title"
+            app:layout_constraintTop_toBottomOf="@id/fragment_create_alarm_timePicker"
+            android:autofillHints="@string/alarm_title" />
 
         <Button
-            android:id="@+id/fragment_createalarm_scheduleAlarm"
+            android:id="@+id/fragment_create_alarm_scheduleAlarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Alarm"
-            app:layout_constraintTop_toBottomOf="@id/fragment_createalarm_title"
+            android:text="@string/add_alarm"
+            app:layout_constraintTop_toBottomOf="@id/fragment_create_alarm_title"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_margin="@dimen/margin" />

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -10,13 +9,13 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="6dp"
         app:cardElevation="6dp"
-        android:layout_margin="10dp">
+        android:layout_margin="@dimen/alarm_margin">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:padding="@dimen/padding_sm">
 
             <TextView
                 android:id="@+id/item_alarm_time"
@@ -24,9 +23,9 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:padding="10dp"
-                android:text="00:00"
-                android:textSize="36sp"/>
+                android:padding="@dimen/padding_lg"
+                android:text="@string/alarm_default"
+                android:textSize="@dimen/text_size_lg"/>
 
 
             <TextView
@@ -55,7 +54,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:clickable="true"
-                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+                android:focusable="true" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

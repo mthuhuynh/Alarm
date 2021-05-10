@@ -12,16 +12,14 @@ import java.util.List;
 
 import funix.prm.alarm.R;
 import funix.prm.alarm.data.Alarm;
-import funix.prm.alarm.data.MyDBHelper;
 
 
 public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmViewHolder> {
     private List<Alarm> alarms;
-    private OnToggleAlarmListener listener;
-    private MyDBHelper mDB;
+    private final OnToggleAlarmListener listener;
 
     public AlarmRecyclerViewAdapter(OnToggleAlarmListener listener) {
-        this.alarms = new ArrayList<Alarm>();
+        this.alarms = new ArrayList<>();
         this.listener = listener;
     }
 

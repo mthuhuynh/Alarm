@@ -38,18 +38,14 @@ public class CreateAlarmFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_createalarm, container, false);
 
-        timePicker = view.findViewById(R.id.fragment_createalarm_timePicker);
-        title = view.findViewById(R.id.fragment_createalarm_title);
-        scheduleAlarm = view.findViewById(R.id.fragment_createalarm_scheduleAlarm);
+        timePicker = view.findViewById(R.id.fragment_create_alarm_timePicker);
+        title = view.findViewById(R.id.fragment_create_alarm_title);
+        scheduleAlarm = view.findViewById(R.id.fragment_create_alarm_scheduleAlarm);
         mDB = new MyDBHelper(getContext());
 
-        scheduleAlarm.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onClick(View v) {
-                scheduleAlarm();
-                Navigation.findNavController(v).navigate(R.id.action_createAlarmFragment_to_alarmsListFragment);
-            }
+        scheduleAlarm.setOnClickListener(v -> {
+            scheduleAlarm();
+            Navigation.findNavController(v).navigate(R.id.action_createAlarmFragment_to_alarmsListFragment);
         });
 
         return view;
@@ -68,8 +64,10 @@ public class CreateAlarmFragment extends Fragment {
                 true
         );
 
+        //Add to Database
         mDB.insert(alarm);
 
+        //Schedule
         alarm.schedule(getContext());
     }
 }

@@ -14,13 +14,13 @@ import androidx.core.app.NotificationCompat;
 
 import funix.prm.alarm.R;
 
-import static funix.prm.alarm.application.App.CHANNEL_ID;
 import static funix.prm.alarm.broadcastreceiver.AlarmBroadcastReceiver.TITLE;
 
 public class AlarmService extends Service {
     private MediaPlayer mediaPlayer;
     private Vibrator vibrator;
     public static final String ACTION_STOP = "stop_alarm";
+    public static final String CHANNEL_ID = "ALARM_SERVICE_CHANNEL";
 
     @Override
     public void onCreate() {
